@@ -1,11 +1,9 @@
 <?php defined('is_running') or die('Not an entry point...');
 
 function pphandle() //password protected page
-{
-	
-	global $page, $addonRelativeCode, $addon_current_id, $addon_current_version;
-    \gp\tool\Plugins::css('encstyle.css');
+{	 
 	global $page,$gp_index,$title,$addonFolderName,$config,$langmessage,$gp_titles;
+	\gp\tool\Plugins::css('encstyle.css');
 	//echo $title; var_export($page->TitleInfo); print_r($gp_titles);
 	//$page->contentBuffer .= '<p>message</p>';
 	if (!isset($gp_index[$title]))
@@ -69,9 +67,7 @@ function pphandle() //password protected page
 	}
 	$s = '<form id="fppp" action="'.common::GetUrl($title).'" method="post" style="margin:1em 0">'.PHP_EOL;
 			
-    $s .= '<br>'; 
-	$s .= '<input type="hidden" name="login_nonce" value="'.htmlspecialchars(\gp\tool\Nonce::Create('login_nonce',true,300)).'" />';
-	$s .= '<br />';
+  	$s .= '<input type="hidden" name="login_nonce" value="'.htmlspecialchars(\gp\tool\Nonce::Create('login_nonce',true,300)).'" />';
 	
 	$s .= '<label for="ppp">'.$a['t1'].'</label><input type="'.($in?'text':'password').'" name="ppp" id="ppp" value="'.($in?$pass:'').'"/>'.PHP_EOL;
 	$s .= '<input type="submit" name="Submit" value="'.($in?$langmessage['save']:$a['t2']).'"/>'.PHP_EOL;		
