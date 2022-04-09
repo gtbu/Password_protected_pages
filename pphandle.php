@@ -20,7 +20,7 @@ function pphandle() //password protected page
 		$a['t2']='Enter';
 		$a['t3']='Enter password to access this page.';
 		$a['t4']='Wrong password';
-		$a['cookies']=false;
+		$a['cookies']=false;  //sleep(3);
 	}
 	if($in)
 	{
@@ -84,6 +84,7 @@ function pphandle() //password protected page
 	{//out+needs a password
 		if ($pass!=$p['ppp'])
 			$page->contentBuffer = isset($_POST['ppp'])? $s.$a['t4']: $s.$a['t3'];//access denied
+		    sleep(2); //delay for bots
 	}
 }
 
